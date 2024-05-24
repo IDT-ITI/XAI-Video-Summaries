@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 from skimage.segmentation import mark_boundaries
 from lime_explanation import *
 from explanation.utils import load_model,load_data,predict
-from segmentantion.video_segmentation import getShots
-from segmentantion.frame_segmentation import *
+from segmentation.video_segmentation import getShots
+from segmentation.frame_segmentation import *
 from metrics import MetricsSpatialCalculator, MetricsFragmentCalculator
 from attention_explanation import *
 
