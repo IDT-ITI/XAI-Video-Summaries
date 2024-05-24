@@ -77,6 +77,12 @@ python explanation/explain.py --model MODEL_PATH --video VIDEO_PATH --fragments 
 ```
 where, `MODEL_PATH` refers to the path of the checkpoint of the trained video summarizer, `VIDEO_PATH` refers to the path of the video, and `NUM_OF_FRAGMENTS` which refers to the number of video fragments to generate the explanations.
 
+Two already trained video summarization models, one for each dataset, are provided inside the [models](/explanation/models) folder in the `explanation` directory and have the following characteristics:
+Model| F1 score | Epoch | Split | Reg. Factor
+| --- | --- | --- | --- | --- |
+summe.pkl | 59.138 | 383 | 4 | 0.5
+tvsum.pkl | 63.462 | 44 | 4 | 0.5
+
 After executing the above command, a new folder is created (if it does not already exist), with the same name and in the same directory as the video we want to explain. There, the deep features (if the file containing the deep features for all the videos of the dataset, does not exist in the dataset folder) and the video shots (unless we already have the optical flow subshots) are extracted in h5 and txt format files, accordingly. Another folder is also created called explanation, containing two txt files that hold the fragment-level explanation (the top `NUM_OF_FRAGMENTS` from Attention and Positive LIME are the explanation) and the evaluation scores, one csv file with the indexes of the explanation fragments and three folders that have the object level explanations, using the top fragments obtained from the afformentioned fragment-level explanations, as well as the ones selected to be included in the summary by the summarizer. Each folder contains 4 explanation images for each fragment, highlighting the most positive, most negative and both positive and negative segments of the keyframe, as well as providing the mask of the latter. Finally, the evaluation scores of each object level explanation can be found inside a csv file, with each row corresponding to the metrics of the top fragments in descending order (first row: top 1 fragment, second row: top 2 fragment etc).
 
 Alternatively, to run the experiment on all of the videos of both datasets, execute the [explain.sh](/explanation/explain.sh) bash script.
