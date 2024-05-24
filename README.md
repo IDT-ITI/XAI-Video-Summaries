@@ -29,7 +29,7 @@ where `val.txt` is a txt file containing the word fragment.
 The paths of the TransNetV2 and video K-Net projects, along with their corresponding virtual environments can be set in the [video_segmentation.py](segmentation/video_segmentation.py#L7:L10) and [frame_segmentation.py](segmentation/frame_segmentation.py#L12:L15) files, accordingly. Do note that the paths for the projects are given relative to the parent directory of this project, while the paths of the virtual environments are given relative to the root directory of the corresponding project.
 
 
-If you want to use the default paths from the [video_segmentation.py](segmentation/video_segmentation.py#L7:L10) and [frame_segmentation.py](segmentation/frame_segmentation.py#L12:L15) files:
+If you want to use the default paths:
 - Set the name of the root directory of the projects to *TransNetV2* and *K-Net* and place them in the parent directory of this project.
 - Set the name of the virtual environment of each project to *.venv* and place it inside the root directory of the corresponding project.
 
