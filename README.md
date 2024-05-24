@@ -1,7 +1,7 @@
 # An Integrated Framework for Multi-Granular Explanation of Video Summarization
 
 ## PyTorch implementation of the software used in:
-- **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**, Proc. TBA
+- [**"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**](https://arxiv.org/abs/2405.10082)
 - Written by Konstantinos Tsigos, Evlampios Apostolidis, Spyridon Baxevanakis, Symeon Papadopoulos and Vasileios Mezaris.
 - This software can be used to produce explanations for the outcome of a video summarization model. Our framework integrates methods for generating explanations at the fragment level (indicating which video fragments influenced the most the decisions of the summarizer), and the more fine-grained object level (highlighting which visual objects were the most influential for the summarizer on a specific video fragment). For the fragment level, we employ the model-specific Attention-based approach proposed in [Apostolidis et al. (2022)](https://ieeexplore.ieee.org/document/10019643), and introduce a new model-agnostic method, that does not require any knowledge about the summarization model. The fragments of the afformentioned explanations, alongside the fragments selected by the summarizer to be included in the summary, are then divided into distinguisable and coherent visual concepts using a state-of-the-art video panoptic segmentation framework and combined with an adaptation of a perturbation-based approach to generate the object level explanations.
 
@@ -91,21 +91,19 @@ To get the evaluation results, averaged on all of the videos of each dataset, ru
     
 If you find our work, code or pretrained models, useful in your work, please cite the following publication:
 
-K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization</b>", Proc. TBA.
+K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization</b>".
 </div>
 
 BibTeX:
 
 ```
-@INPROCEEDINGS{TBA,
-    author    = {Tsigos, Konstantinos, and Apostolidis, Evlampios and Mezaris, Vasileios},
-    title     = {An Integrated Framework for Multi-Granular Explanation of Video Summarization},
-    year      = {2024},
-    publisher = {TBA},
-    address   = {TBA},
-    booktitle = {TBA},
-    location  = {TBA},
-    series    = {TBA}
+@misc{tsigos2024integrated,
+      title={An Integrated Framework for Multi-Granular Explanation of Video Summarization}, 
+      author={Konstantinos Tsigos and Evlampios Apostolidis and Vasileios Mezaris},
+      year={2024},
+      eprint={2405.10082},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
