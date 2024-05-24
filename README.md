@@ -12,7 +12,7 @@ Since the code uses the TransNetV2 and video K-Net frameworks to temporally segm
 
 In the case of video K-Net:
 - The trained model used is the `video_k_net_swinb_vip_seg.pth`, which can be downloaded from the VIP-Seg folder of the provided links found at the README [Pretrained CKPTs and Trained Models](https://github.com/lxtGH/Video-K-Net?tab=readme-ov-file#pretrained-ckpts-and-trained-models) section. It is then placed inside the root directory of the video K-Net project.
-- The `test_step.py` python file located at the `/tools` directory, needs to be replaced with the modified [test_step.py](/k-Net/test_step.py) file, located into the [k-Net](/k-Net) folder of this project.
+- The `test_step.py` python file located at the `/tools` directory, needs to be replaced with the modified [test_step.py](/k-Net/test_step.py) file, provided with in this project.
 - The `data` folder needs to be created into the root directory of the video k-Net project with the following structure:
 
 ```Text
@@ -24,7 +24,27 @@ In the case of video K-Net:
             /fragment
         val.txt
 ```
-where `val.txt` is a txt file containing the word fragment
+where `val.txt` is a txt file containing the word fragment.
+
+The paths of the TransNetV2 and video K-Net projects, along with their corresponding virtual environments can be set in the [video_segmentation.py](segmentation/video_segmentation.py#L7:L10) and [frame_segmentation.py](segmentation/frame_segmentation.py#L12:L15) files, accordingly. Do note that the paths for the projects are given relative to the parent directory of this project, while the paths of the virtual environments are given relative to the root directory of the corresponding project.
+
+
+If you want to use the default paths from the [video_segmentation.py](segmentation/video_segmentation.py#L7:L10) and [frame_segmentation.py](segmentation/frame_segmentation.py#L12:L15) files:
+- Set the name of the root directory of the projects to *TransNetV2* and *K-Net* and place them in the parent directory of this project.
+- Set the name of the virtual environment of each project to *.venv* and place it inside the root directory of the corresponding project.
+
+In the end you should end up with the following structure:
+```Text
+/Parent Directory
+    /K-Net
+        /.venv
+        ...
+    /TransNetV2
+        /.venv
+        ...
+    /XAI-Video-Summaries
+        ...
+```
 
 ## Data
 <div align="justify">
@@ -50,30 +70,21 @@ The produced h5 files have the following structure:
 ## Running an experiment
 <div align="justify">
 
-To run an experiment using one of the aforementioned datasets, execute the following command:
+To run an experiment using a video from one of the aforementioned datasets, execute the following command:
 
 ```
-python explanation/explain.py --summarization_method 'method_name' --dataset 'dataset_name' --replacement_method 'replacement_method_name' --replaced_fragments 'set_of_repl_fragments' --visual_mask 'visual_mask_name'
+python explanation/explain.py --model MODEL_PATH --video VIDEO_PATH --fragments NUM_OF_FRAGMENTS (optional, default=3)
 ```
-where, `method_name` refers to the name of the used video summarization method, `dataset_name` refers to the name of the used dataset, `replacement_method_name` refers to the applied replacement function in fragments of the input data, `set_of_repl_fragments` refers to the amount of replaced fragments of the input data, and `visual_mask_name` refers to the type of the used mask when replacing fragments of the input data.
+where, `MODEL_PATH` refers to the path of the checkpoint of the trained video summarizer, `VIDEO_PATH` refers to the path of the video, and `NUM_OF_FRAGMENTS` which refers to the number of video fragments to generate the explanations.
 
-After executing the above command you get the overall results for each different data split, as well as the overall results that are computed by averaging the obtained scores across data splits. Please note that, the results when fragments' replacement is based on "Randomization" might be slightly different from the reported ones, as we did not use a fixed seed value in our experiments.
+After executing the above command, a new folder is created (if it does not already exist), with the same name and in the same directory as the video we want to explain. There, the deep features (if the file containing the deep features for all the videos of the dataset, does not exist in the dataset folder) and the video shots (unless we already have the optical flow subshots) are extracted in h5 and txt format files, accordingly. Another folder is also created called explanation, containing two txt files that hold the fragment-level explanation (the top `NUM_OF_FRAGMENTS` from Attention and Positive LIME are the explanation) and the evaluation scores, one csv file with the indexes of the explanation fragments and three folders that have the object level explanations, using the top fragments obtained from the afformentioned fragment-level explanations, as well as the ones selected to be included in the summary by the summarizer. Each folder contains 4 explanation images for each fragment, highlighting the most positive, most negative and both positive and negative segments of the keyframe, as well as providing the mask of the latter. Finally, the evaluation scores of each object level explanation can be found inside a csv file, with each row corresponding to the metrics of the top fragments in descending order (first row: top 1 fragment, second row: top 2 fragment etc).
 
-## Running parameters and evaluation results
+Alternatively, to run the experiment on all of the videos of both datasets, execute the [explain.sh](/explanation/explain.sh) bash script.
+
+## Evaluation results
 <div align="justify">
 
-Setup for the experimental evaluation:
- - In [`main.py`](main.py), specify the path to the pretrained models of the used method for video summarization. 
- - In [`data_loader.py`](data_loader.py), specify the paths to the h5 file of the used dataset, and the JSON file containing data about the used data splits.</div>
-   
-Arguments in [`configs.py`](configs.py): 
-|Parameter name | Description | Default Value | Options
-| :--- | :--- | :---: | :---:
-`summarization method` | The used video summarization method. | 'CA-SUM' | 'CA-SUM', 'VASNet', 'SUM-GDA'
-`dataset` | The used dataset. | 'SumMe' | 'SumMe', 'TVSum'
-`replacement_method` | The applied replacement function. | 'slice-out' | 'slice-out', 'input-mask', 'random', 'attention-mask'
-`replaced_fragments` | The amount of replaced fragments. | 'batch' | 'batch', 'single'
-`visual_mask` | The used visual mask for replacement. | 'black-frame' | 'black-frame', 'white-frame'
+To get the evaluation results, averaged on all of the videos of each dataset, run the [final_scores.py](explanation/final_scores.py) script. The final scores are saved into the `final_scores` folder, created inside the [explanation](/explanation) path. To specify a specific dataset or videos for each dataset, set the [dataset](explanation/final_scores.py#L9:L10) and [videos](explanation/final_scores.py#L11:L12) variables appropriately.
 
 ## Citation
 <div align="justify">
