@@ -1,20 +1,17 @@
 # An Integrated Framework for Multi-Granular Explanation of Video Summarization
 
-## PyTorch implementation of the software used in:
-- [**"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**](https://arxiv.org/abs/2405.10082)
-- Written by Konstantinos Tsigos, Evlampios Apostolidis, Spyridon Baxevanakis, Symeon Papadopoulos and Vasileios Mezaris.
-- This software can be used to produce explanations for the outcome of a video summarization model. Our framework integrates methods for generating explanations at the fragment level (indicating which video fragments influenced the most the decisions of the summarizer), and the more fine-grained object level (highlighting which visual objects were the most influential for the summarizer on a specific video fragment). For the fragment level, we employ the model-specific Attention-based approach proposed in [Apostolidis et al. (2022)](https://ieeexplore.ieee.org/document/10019643), and introduce a new model-agnostic method, that does not require any knowledge about the summarization model. The fragments of the afformentioned explanations, alongside the fragments selected by the summarizer to be included in the summary, are then divided into distinguisable and coherent visual concepts using a state-of-the-art video panoptic segmentation framework and combined with an adaptation of a perturbation-based approach to generate the object level explanations.
+## PyTorch implementation [[Paper](https://arxiv.org/abs/2405.10082)] [[Cite](#citation)]
+- From **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**
+- Written by Konstantinos Tsigos, Evlampios Apostolidis and Vasileios Mezaris.
+- This software can be used to produce explanations for the outcome of a video summarization model. Our framework integrates methods for generating explanations at the fragment level (indicating which video fragments influenced the most the decisions of the summarizer), and the more fine-grained object level (highlighting which visual objects were the most influential for the summarizer on a specific video fragment). For fragment-level explanations, we employ the model-specific attention-based approach proposed in [Apostolidis et al. (2022)](https://ieeexplore.ieee.org/document/10019643), and introduce a new model-agnostic method that does not require any knowledge about the summarization model. The fragments of the aformentioned explanations, alongside the fragments selected by the summarizer to be included in the summary, are then processed by a state-of-the-art video panoptic segmentation framework and combined with an adaptation of a perturbation-based approach, to generate object-level explanations.
 
 ## Main dependencies
-The code was developed, checked and verified on an `Ubuntu 20.04.6` PC with an `NVIDIA RTX 4090` GPU and an `i5-12600K` CPU. All dependencies of this project can be found inside the [requirements.txt](requirements.txt) file, which can be used to set up the necessary virtual enviroment.
+The code was developed, checked and verified on an `Ubuntu 20.04.6` PC with an `NVIDIA RTX 4090` GPU and an `i5-12600K` CPU. All dependencies can be found inside the [requirements.txt](requirements.txt) file, which can be used to set up the necessary virtual enviroment.
 
-Since the code uses the TransNetV2 and video K-Net frameworks to temporally segment the videos and get the video panoptic segmentation of the fragments respectively, two additional projects need to be made containing the [TransNetV2](https://github.com/soCzech/TransNetV2) and [video K-Net](https://github.com/lxtGH/Video-K-Net) GitHub repositories, alongside the necessary virtual environments for them to work.
-
-In the case of video K-Net:
-- The trained model used is the `video_k_net_swinb_vip_seg.pth`, which can be downloaded from the VIP-Seg folder of the provided links found at the README [Pretrained CKPTs and Trained Models](https://github.com/lxtGH/Video-K-Net?tab=readme-ov-file#pretrained-ckpts-and-trained-models) section. It is then placed inside the root directory of the video K-Net project.
-- The `test_step.py` python file located at the `/tools` directory, needs to be replaced with the modified [test_step.py](/k-Net/test_step.py) file, provided with in this project.
-- The `data` folder needs to be created into the root directory of the video k-Net project with the following structure:
-
+To run the Video K-Net method for video panoptic segmentation, use the code from the [official Github repository](https://github.com/lxtGH/Video-K-Net) and set-up the necesary environment following the instructions in the aforementioned repository, and the steps bellow: 
+- The utilized trained model, called `video_k_net_swinb_vip_seg.pth` and found [here](https://github.com/lxtGH/Video-K-Net?tab=readme-ov-file#pretrained-ckpts-and-trained-models), should be placed within the root directory of the video K-Net project.
+- The `test_step.py` script located [here](https://github.com/lxtGH/Video-K-Net/tree/main/tools), needs to be replaced by the provided [test_step.py](/k-Net/test_step.py) script.
+- The `data` folder within the root directory of the video k-Net project, should be created manually and have the following structure:
 ```Text
 /data
     /VIPSeg
@@ -24,16 +21,16 @@ In the case of video K-Net:
             /fragment
         val.txt
 ```
-where `val.txt` is a txt file containing the word fragment.
+- The `val.txt` file found [here](), should be placed within the /VIPSeg directory, as shown above.
 
-The paths of the TransNetV2 and video K-Net projects, along with their corresponding virtual environments can be set in the [video_segmentation.py](segmentation/video_segmentation.py#L7:L10) and [frame_segmentation.py](segmentation/frame_segmentation.py#L12:L15) files, accordingly. Do note that the paths for the projects are given relative to the parent directory of this project, while the paths of the virtual environments are given relative to the root directory of the corresponding project.
+Regarding the temporal segmentation of the videos, the utilized fragments in our experiments are available in the [data](https://github.com/IDT-ITI/XAI-Video-Summaries/tree/main/data) folder. In case there is a need to re-run shot segmentation using the TransNetV2 method,  please use the code from the [official Github repository](https://github.com/soCzech/TransNetV2) and set-up the necesary environment following the instructions in the aforementioned repository.
 
+The paths of the Video K-Net and TransNetV2 projects, along with their corresponding virtual environments can be set in the [video_segmentation.py](segmentation/video_segmentation.py#L7:L10) and [frame_segmentation.py](segmentation/frame_segmentation.py#L12:L15) files, accordingly. Please note that the paths for the projects are given relatively to the parent directory of this project, while the paths of the virtual environments are given relatively to the root directory of the corresponding project.
 
-If you want to use the default paths:
+If there is a need to use the default paths:
 - Set the name of the root directory of the projects to *TransNetV2* and *K-Net* and place them in the parent directory of this project.
 - Set the name of the virtual environment of each project to *.venv* and place it inside the root directory of the corresponding project.
-
-In the end you should end up with the following structure:
+This will result in the following project structure:
 ```Text
 /Parent Directory
     /K-Net
