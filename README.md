@@ -93,7 +93,7 @@ To get the evaluation results, averaged on all of the videos of each dataset, ru
     
 If you find our work, code or pretrained models, useful in your work, please cite the following publication:
 
-K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization</b>".
+K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization, arXiv preprint arXiv:2405.10082, 2024</b>".
 </div>
 
 BibTeX:
@@ -112,7 +112,7 @@ BibTeX:
 ## License
 <div align="justify">
     
-Copyright (c) 2024, Konstantinos Tsigos, Evlampios Apostolidis, Spyridon Baxevanakis, Symeon Papadopoulos, Vasileios Mezaris / CERTH-ITI. All rights reserved. This code is provided for academic, non-commercial use only. Redistribution and use in source and binary forms, with or without modification, are permitted for academic non-commercial use provided that the following conditions are met:
+Copyright (c) 2024, Konstantinos Tsigos, Evlampios Apostolidis, Vasileios Mezaris / CERTH-ITI. All rights reserved. This code is provided for academic, non-commercial use only. Redistribution and use in source and binary forms, with or without modification, are permitted for academic non-commercial use provided that the following conditions are met:
 
 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation provided with the distribution.
@@ -121,4 +121,4 @@ This software is provided by the authors "as is" and any express or implied warr
 </div>
 
 ## Acknowledgement
-<div align="justify"> This work was supported by the EU Horizon Europe and Horizon 2020 programmes under grant agreements 101070190 AI4TRUST and 951911 AI4Media, respectively. </div>
+<div align="justify"> This work was supported by the EU Horizon 2020 programme under grant agreement 951911 AI4Media. </div>
