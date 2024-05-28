@@ -90,7 +90,7 @@ To produce explanations for all videos of the SumMe and TVSum datasets, please r
 ## Evaluation results
 <div align="justify">
 
-To get the evaluation results, averaged on all of the videos of each dataset, run the [final_scores.py](explanation/final_scores.py) script. The final scores are saved into the `final_scores` folder, created inside the [explanation](/explanation) path. To specify a specific dataset or videos for each dataset, set the [dataset](explanation/final_scores.py#L9:L10) and [videos](explanation/final_scores.py#L11:L12) variables appropriately.
+To get the overall evaluation results (for all videos of the used datasets), please run the [final_scores.py](explanation/final_scores.py) script. The final scores are saved into the `final_scores` directory that is placed inside the [explanation](/explanation) folder. To run the evaluation for a specific dataset or a subset of videos, please set the [dataset](explanation/final_scores.py#L9:L10) and [videos](explanation/final_scores.py#L11:L12) variables appropriately.
 
 ## Citation
 <div align="justify">
