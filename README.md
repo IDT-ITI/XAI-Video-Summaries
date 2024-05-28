@@ -21,7 +21,7 @@ To run the Video K-Net method for video panoptic segmentation, use the code from
             /fragment
         val.txt
 ```
-- The `val.txt` file found [here](), should be placed within the /VIPSeg directory, as shown above.
+- The `val.txt` file found [here](/k-Net/val.txt), should be placed within the /VIPSeg directory, as shown above.
 
 Regarding the temporal segmentation of the videos, the utilized fragments in our experiments are available in the [data](https://github.com/IDT-ITI/XAI-Video-Summaries/tree/main/data) folder. As stated in our paper, these fragments were produced by the TransNetV2 shot segmentation method (for multi-shot videos) and the motion-driven method for sub-shot segmentation (for single-shot videos), described in [Apostolidis et al. (2018)](https://link.springer.com/chapter/10.1007/978-3-319-73603-7_3). In case there is a need to re-run shot segmentation, please use the code from the [official Github repository](https://github.com/soCzech/TransNetV2) and set-up the necesary environment following the instructions in the aforementioned repository. In case there is a need to also re-run sub-shot segmentation, please contact us for providing access to the utilized method.
 
