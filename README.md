@@ -97,7 +97,7 @@ To get the overall evaluation results (for all videos of the used datasets), ple
     
 If you find our work, code or pretrained models, useful in your work, please cite the following publication:
 
-K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization</b>", arXiv preprint [arXiv:2405.10082](https://arxiv.org/abs/2405.10082), 2024.
+K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization</b>", arXiv preprint, [arXiv:2405.10082](https://arxiv.org/abs/2405.10082), 2024.
 </div>
 
 BibTeX:
