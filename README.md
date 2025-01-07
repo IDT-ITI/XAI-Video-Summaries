@@ -1,7 +1,7 @@
 # An Integrated Framework for Multi-Granular Explanation of Video Summarization
 
 ## PyTorch implementation [[Paper](https://arxiv.org/abs/2405.10082)] [[Cite](#citation)]
-- From **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**, Frontiers in Signal Processing, vol. 4, 2024
+- From **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**, Frontiers in Signal Processing, vol. 4, 2024.
 - Written by Konstantinos Tsigos, Evlampios Apostolidis and Vasileios Mezaris.
 - This software can be used to produce explanations for the outcome of a video summarization model. Our framework integrates methods for generating explanations at the fragment level (indicating which video fragments influenced the most the decisions of the summarizer), and the more fine-grained object level (highlighting which visual objects were the most influential for the summarizer on a specific video fragment). For fragment-level explanations, we employ the model-specific attention-based approach proposed in [Apostolidis et al. (2022)](https://ieeexplore.ieee.org/document/10019643), and introduce a new model-agnostic method that does not require any knowledge about the summarization model. The fragments of the aformentioned explanations, alongside the fragments selected by the summarizer to be included in the summary, are then processed by a state-of-the-art video panoptic segmentation framework and combined with an adaptation of a perturbation-based approach, to generate object-level explanations.
 
@@ -95,21 +95,23 @@ To get the overall evaluation results (for all videos of the used datasets), ple
 ## Citation
 <div align="justify">
     
-If you find our work, code or pretrained models, useful in your work, please cite the following publication:
+If you find our work, code or pretrained models, useful in your work, please cite the following publication: K. Tsigos, E. Apostolidis, V. Mezaris, **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**, Frontiers in Signal Processing, vol. 4, 2024. DOI:10.3389/frsip.2024.1433388
 
-K. Tsigos, E. Apostolidis, V. Mezaris, "<b>An Integrated Framework for Multi-Granular Explanation of Video Summarization</b>", arXiv preprint, [arXiv:2405.10082](https://arxiv.org/abs/2405.10082), 2024.
+The accepted version of this paper is available on ArXiv at: https://arxiv.org/abs/2405.10082
 </div>
 
 BibTeX:
 
 ```
-@misc{tsigos2024integrated,
-      title={An Integrated Framework for Multi-Granular Explanation of Video Summarization}, 
-      author={Konstantinos Tsigos and Evlampios Apostolidis and Vasileios Mezaris},
-      year={2024},
-      eprint={2405.10082},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@ARTICLE{10.3389/frsip.2024.1433388,
+    AUTHOR={Tsigos, Konstantinos  and Apostolidis, Evlampios  and Mezaris, Vasileios },
+    TITLE={An integrated framework for multi-granular explanation of video summarization},
+    JOURNAL={Frontiers in Signal Processing},
+    VOLUME={4},
+    YEAR={2024},
+    URL={https://www.frontiersin.org/journals/signal-processing/articles/10.3389/frsip.2024.1433388},
+    DOI={10.3389/frsip.2024.1433388},
+    ISSN={2673-8198},
 }
 ```
 
