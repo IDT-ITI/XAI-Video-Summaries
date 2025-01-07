@@ -1,7 +1,7 @@
 # An Integrated Framework for Multi-Granular Explanation of Video Summarization
 
 ## PyTorch implementation [[Paper](https://arxiv.org/abs/2405.10082)] [[Cite](#citation)]
-- From **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**
+- From **"An Integrated Framework for Multi-Granular Explanation of Video Summarization"**, Frontiers in Signal Processing, vol. 4, 2024
 - Written by Konstantinos Tsigos, Evlampios Apostolidis and Vasileios Mezaris.
 - This software can be used to produce explanations for the outcome of a video summarization model. Our framework integrates methods for generating explanations at the fragment level (indicating which video fragments influenced the most the decisions of the summarizer), and the more fine-grained object level (highlighting which visual objects were the most influential for the summarizer on a specific video fragment). For fragment-level explanations, we employ the model-specific attention-based approach proposed in [Apostolidis et al. (2022)](https://ieeexplore.ieee.org/document/10019643), and introduce a new model-agnostic method that does not require any knowledge about the summarization model. The fragments of the aformentioned explanations, alongside the fragments selected by the summarizer to be included in the summary, are then processed by a state-of-the-art video panoptic segmentation framework and combined with an adaptation of a perturbation-based approach, to generate object-level explanations.
 
