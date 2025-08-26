@@ -53,7 +53,7 @@ Original videos for each dataset are available in the dataset providers' webpage
 
 These videos have to be placed into the `SumMe` and `TVSum` directories of the [data](data) folder.
 
-The extracted deep features for the SumMe and TVSum videos are already available into aforementioned directories. In case there is a need to extract these deep features from scratch (and store them into h5 files), please run the [feature_extraction.py](features/feature_extraction.py) script. Otherwise, an h5 file will be produced automatically for each video and stored into the relevant directory of the [data](data) folder.
+The extracted deep features for the SumMe and TVSum videos are already available into the aforementioned directories. In case there is a need to extract these deep features from scratch (and store them into h5 files), please run the [feature_extraction.py](features/feature_extraction.py) script. Otherwise, an h5 file will be produced automatically for each video and stored into the relevant directory of the [data](data) folder.
 
 The produced h5 files have the following structure:
 ```Text
